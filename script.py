@@ -1,7 +1,6 @@
 import os
 from neo4j import GraphDatabase
 import spacy
-from langchain_community.document_loaders import WikipediaLoader
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
