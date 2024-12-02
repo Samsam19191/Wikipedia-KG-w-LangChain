@@ -72,11 +72,9 @@ def process_wikipedia_content(content):
 
 
 def chat_with_gpt(prompt):
-
     client = OpenAI(
         api_key=OPENAI_API_KEY,
     )
-
     chat_completion = client.chat.completions.create(
         messages=[
             {
@@ -86,7 +84,6 @@ def chat_with_gpt(prompt):
         ],
         model="gpt-3.5-turbo",
     )
-
     return chat_completion.choices[0].message["content"]
 
 
@@ -127,19 +124,15 @@ def Json_to_cypher(Json_response):
     data = json.loads(Json_response)
     nodes = data["nodes"]
     relationships = data["relationships"]
-
     cypher_query = ""
-
     # For nodes
     for node in nodes:
         node_ID = node[0]
         node_type = node[1]
         properties = node[2]
-
         property_str = ", ".join(
             [f'{key}: "{value}"' for key, value in properties.items()]
         )
-
         cypher_query += f"CREATE ({node_ID}:{node_type} {{{property_str}}})\n"
 
     # For relationships
@@ -149,7 +142,7 @@ def Json_to_cypher(Json_response):
             [f'{key}: "{value}"' for key, value in properties.items()]
         )
         cypher_query += f"CREATE ({relationship[0]})-[:{relationship[1]} {{{property_str}}}]->({relationship[2]})\n"
-
+        
     return cypher_query
 
 
