@@ -40,7 +40,7 @@ def run_cypher_query(query, driver):
 
 
 def extract_wikipedia_content(page_title):
-    user_agent = "WikipediaAPI/0.5 (Academic Project; taidersami1@gmail.com)"  # Replace with your email
+    user_agent = "WikipediaAPI/0.5 (Academic Project; taidersami1@gmail.com)"
 
     wiki_wiki = wikipediaapi.Wikipedia(
         language="en",
@@ -57,7 +57,6 @@ def extract_wikipedia_content(page_title):
         return None
 
 
-# Process the text with spaCy
 def process_wikipedia_content(content):
     if content:
         nlp = spacy.load("en_core_web_sm")
